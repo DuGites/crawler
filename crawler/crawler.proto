@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package crawler;
+
+service Crawler {
+  rpc Crawl (LinkRequest) returns (CrawlerResponse) {}
+  rpc Stop (StopRequest) returns (StopResponse) {}
+  rpc ListVisitedUrls (ListRequest) returns (stream LinkRequest) {}
+
+}
+
+message LinkRequest {
+  string url = 1;
+}
+
+message CrawlerResponse {
+  string message = 1;
+}
+
+message StopRequest {
+  string link = 1;
+}
+
+message StopResponse {
+  string message = 1;
+}
+
+message ListRequest {
+	bool list = 1;
+}
